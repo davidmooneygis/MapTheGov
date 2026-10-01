@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MapTheGov</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div id="map"></div>
+    <div id="sidebar">
+        <h2>Location Info</h2>
+        <div id="info-content" class="placeholder">
+            Click anywhere on the map to see details.
+        </div>
+    </div>
+
+    <!-- Leaflet JS MUST load BEFORE your module -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Your custom modules -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>

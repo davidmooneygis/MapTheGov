@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: mapthegov
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: mapthegov
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      # UPDATED: Mount to /data/processed to match the file structure
+      - ./data/processed:/data/processed:ro
+      # Load our custom Nginx config (if you created nginx.conf earlier)
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
